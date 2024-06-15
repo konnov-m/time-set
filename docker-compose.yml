@@ -1,0 +1,38 @@
+services:
+  db-user-service:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: user
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-U", "admin" ]
+    ports:
+      - 3001:5432
+
+  pgadmin-user-service:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+
+  backend-user-service:
+    build:
+      dockerfile: user-service/Dockerfile
+    restart: always
+    environment:
+      DB_NAME: user
+      DB_USER: admin
+      DB_PASSWORD: admin
+      DB_HOST: db-user-service
+      DB_PORT: 5432
+    ports:
+      - 3000:3000
+    depends_on:
+      db-user-service:
+        condition: service_healthy
