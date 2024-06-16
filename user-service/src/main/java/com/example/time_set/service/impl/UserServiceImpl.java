@@ -5,7 +5,7 @@ import com.example.time_set.dto.UserDto;
 import com.example.time_set.model.User;
 import com.example.time_set.repository.UserRepository;
 import com.example.time_set.service.UserService;
-import jakarta.persistence.EntityNotFoundException;
+import com.example.time_set.util.exception.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUser(long id) {
         log.info("Try to get user with id = {}", id);
-        User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(USER_NOT_FOUND + id));
+        User user = userRepository.findById(id).orElseThrow(() -> new DataNotFoundException(USER_NOT_FOUND + id));
         return userConverter.userToUserDto(user);
     }
 }
