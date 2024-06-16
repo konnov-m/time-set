@@ -1,9 +1,8 @@
 package com.example.time_set.service;
 
-import com.example.time_set.model.User;
-import org.springframework.stereotype.Service;
+import com.example.time_set.dto.UserDto;
 
-@Service
+
 public interface UserService {
-    User getUser(long id);
+    UserDto getUser(long id);
 }

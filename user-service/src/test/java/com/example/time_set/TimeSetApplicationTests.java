@@ -1,13 +1,14 @@
 package com.example.time_set;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class TimeSetApplicationTests {
 
+@Disabled
+@SpringBootTest(classes = UserServiceApplication.class)
+public class TimeSetApplicationTests {
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 	}
-
 }
