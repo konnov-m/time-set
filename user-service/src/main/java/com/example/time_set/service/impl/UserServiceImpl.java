@@ -1,6 +1,7 @@
 package com.example.time_set.service.impl;
 
 import com.example.time_set.converter.UserDtoConverter;
+import com.example.time_set.dto.CreateUserDto;
 import com.example.time_set.dto.UserDto;
 import com.example.time_set.model.User;
 import com.example.time_set.repository.UserRepository;
@@ -27,4 +28,14 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id).orElseThrow(() -> new DataNotFoundException(USER_NOT_FOUND + id));
         return userConverter.userToUserDto(user);
     }
+
+    @Override
+    public void saveUser(CreateUserDto user) {
+        log.info("Try to save user.");
+        log.debug("user: {}", user);
+        User userToSave = userConverter.createUserDtoToUser(user);
+        userRepository.saveAndFlush(userToSave);
+    }
+
+
 }

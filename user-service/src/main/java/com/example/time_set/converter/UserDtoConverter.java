@@ -1,5 +1,6 @@
 package com.example.time_set.converter;
 
+import com.example.time_set.dto.CreateUserDto;
 import com.example.time_set.dto.UserDto;
 import com.example.time_set.model.User;
 import org.mapstruct.Mapper;
@@ -8,4 +9,6 @@ import org.mapstruct.Mapper;
 public interface UserDtoConverter {
 
     UserDto userToUserDto(User user);
+
+    User createUserDtoToUser(CreateUserDto userDto);
 }

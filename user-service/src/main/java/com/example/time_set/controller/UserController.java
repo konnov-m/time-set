@@ -1,5 +1,6 @@
 package com.example.time_set.controller;
 
+import com.example.time_set.dto.CreateUserDto;
 import com.example.time_set.dto.UserDto;
 import com.example.time_set.service.UserService;
 import com.example.time_set.util.exception.GlobalExceptionHandler;
@@ -9,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,5 +33,17 @@ public class UserController {
     public UserDto getUser(@PathVariable long id) {
         return userService.getUser(id);
     }
+
+    @Operation(summary = "Save user", description = "Save user with CreateUserDto")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully"),
+    })
+    @PostMapping
+    public void createUser(@RequestBody @Valid CreateUserDto userDto) {
+        userService.saveUser(userDto);
+    }
+
+
+
 
 }
