@@ -2,6 +2,3 @@ databaseChangeLog: #параметр в котором находятся миг
   - include: # список активных миграций
       file: db/changelog/changeset/create-user-table.sql
       author: konnov_m
-  - include:
-      file: db/changelog/changeset/insert-user.sql
-      author: konnov_m

@@ -8,6 +8,9 @@ services:
       POSTGRES_PASSWORD: admin
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready", "-U", "admin" ]
+    volumes:
+      - ./database/user-service:/var/lib/postgresql/data
+      - ./user-service/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - 3001:5432
 
@@ -31,6 +34,7 @@ services:
       DB_PASSWORD: admin
       DB_HOST: db-user-service
       DB_PORT: 5432
+      DB_SCHEMA: dev
     ports:
       - 3000:3000
     depends_on:
