@@ -3,6 +3,9 @@ package com.example.time_set.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Пользователь
+ */
 @Getter
 @Setter
 @Builder

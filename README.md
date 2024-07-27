@@ -12,3 +12,9 @@ docker-compose up --build -d
 ```shell
 docker-compose down
 ```
+
+## Swagger
+Example [url](http://localhost:3000/api/v1/user-service/swagger-ui/index.html)  for user-service:
+```url
+http://localhost:3000/api/v1/user-service/swagger-ui/index.html
+```

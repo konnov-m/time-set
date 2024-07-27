@@ -5,6 +5,9 @@ import com.example.time_set.dto.UserDto;
 import com.example.time_set.model.User;
 import org.mapstruct.Mapper;
 
+/**
+ * Конвертер для {@link User}
+ */
 @Mapper(componentModel = "spring")
 public interface UserDtoConverter {
 
